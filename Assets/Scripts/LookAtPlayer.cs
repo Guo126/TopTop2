@@ -11,7 +11,7 @@ public class LookAtPlayer : MonoBehaviour {
 	void Start () {
         target = GameObject.FindGameObjectWithTag("Player");
         offset = target.transform.position - this.transform.position;
-        Debug.Log(this.name);
+      //  Debug.Log(this.name);
 	}
 
     void LateUpdate()
