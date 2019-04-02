@@ -12,7 +12,11 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
     [SerializeField] private Button deleteButton;
 
     [SerializeField]
+<<<<<<< HEAD
     private Weapon weapon;
+=======
+    private Material mat;
+>>>>>>> c8a540ea00dbb717d51ae6f0da945112c7f0e6fe
     
     private GameObject g;
     public IUnityEvent op;
@@ -35,7 +39,16 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
         }
     }
-   
+
+    private void Reset()
+    {
+        Material material =(Material) Resources.Load("Hero/blue");
+        mat = material;
+        equip = GameObject.Find("equip_0x");
+        useButton = GameObject.Find("Button_useItem (1)").GetComponent<Button>();
+        deleteButton = GameObject.Find("Button_destoryitem (1)").GetComponent<Button>();
+    }
+
 
     void Start()
     {
@@ -335,7 +348,14 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
             if (item.addAtk != 0)
             {
                 PlayerMes.getInstance().Attack += item.addAtk;
+<<<<<<< HEAD
                 weapon.SetColor(new Color(70/255,  1, 1));
+=======
+                if (item.name == "sword04")
+                {
+                    mat.SetColor("_Color",Color.red);
+                }
+>>>>>>> c8a540ea00dbb717d51ae6f0da945112c7f0e6fe
                 op.Invoke(2);
             }
             if (item.addDef != 0)
