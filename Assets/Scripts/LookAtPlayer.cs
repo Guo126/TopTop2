@@ -12,13 +12,8 @@ public class LookAtPlayer : MonoBehaviour {
     void Start () {
         target = GameObject.FindGameObjectWithTag("Player");
         offset = target.transform.position - this.transform.position;
-<<<<<<< HEAD
          rot = transform.eulerAngles;
     }
-=======
-      //  Debug.Log(this.name);
-	}
->>>>>>> c8a540ea00dbb717d51ae6f0da945112c7f0e6fe
 
     void LateUpdate()
     {     

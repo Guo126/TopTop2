@@ -6,17 +6,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-
+    private Material mat;
     [SerializeField] private GameObject equip;
     [SerializeField] private Button useButton;
     [SerializeField] private Button deleteButton;
 
     [SerializeField]
-<<<<<<< HEAD
     private Weapon weapon;
-=======
-    private Material mat;
->>>>>>> c8a540ea00dbb717d51ae6f0da945112c7f0e6fe
     
     private GameObject g;
     public IUnityEvent op;
@@ -348,14 +344,7 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
             if (item.addAtk != 0)
             {
                 PlayerMes.getInstance().Attack += item.addAtk;
-<<<<<<< HEAD
                 weapon.SetColor(new Color(70/255,  1, 1));
-=======
-                if (item.name == "sword04")
-                {
-                    mat.SetColor("_Color",Color.red);
-                }
->>>>>>> c8a540ea00dbb717d51ae6f0da945112c7f0e6fe
                 op.Invoke(2);
             }
             if (item.addDef != 0)
