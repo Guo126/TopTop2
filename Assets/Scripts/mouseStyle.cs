@@ -5,9 +5,10 @@ public class mouseStyle :MonoBehaviour
 {
     public Texture mouse;
     public RawImage image1, image2;
-
+    public GameObject music;
     private void Start()
     {
+        PlayerPrefs.DeleteAll();
         if (PlayerPrefs.GetInt("Story2") == 1)
         {
             startGame();
@@ -36,6 +37,7 @@ public class mouseStyle :MonoBehaviour
         {
             image1.gameObject.SetActive(false);
             image2.gameObject.SetActive(false);
+            
             PlayerPrefs.SetInt("Story2", 1);
         }
         

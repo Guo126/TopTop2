@@ -21,7 +21,7 @@ public class ItemsRefresh : MonoBehaviour {
     }
     void Awake()
     {
-        filename ="Assets/Save/GameBagData.sav";
+        filename = Application.streamingAssetsPath+"/Save/GameBagData.sav";
         bagList=new List<List<Item>>();
         bagList=(List<List<Item>>)IOHelper.GetData(filename,typeof(List<List<Item>>));
         instance = this;

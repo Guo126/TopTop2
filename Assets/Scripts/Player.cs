@@ -19,16 +19,28 @@ public class Player : MonoBehaviour {
     private Vector3 direction = Vector3.zero;
     public Vector3 target;
 
+    public float gravity = 5f;
+    
     public float speed = 3f;
     public GameObject perfab;
-    private CharacterController characterController;
+    
     public AudioClip[] ac = new AudioClip[4];
-
+    private GameObject enemys;
+    public Shoot shoot;
+    public Fight fight;
     // Use this for initialization
     void Start () {
         anim = gameObject.GetComponent<Animator>();
-	    characterController = GetComponent<CharacterController>();
-
+	    
+        if (gameObject.GetComponent<Shoot>() != null)
+        {
+            shoot = gameObject.GetComponent<Shoot>();
+        }
+        else
+        {
+            fight = gameObject.GetComponent<Fight>();
+        }
+        
 	    target = transform.position;
 	}
 	
@@ -38,20 +50,36 @@ public class Player : MonoBehaviour {
         ChatWith();
         if (Input.GetMouseButtonDown(1))
         {
-            LayerMask lm = 1 << LayerMask.NameToLayer("Road");
+            LayerMask lm =  LayerMask.NameToLayer("Road");          
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
             RaycastHit info;
-            Physics.Raycast(ray, out info, 1000f, lm.value);
-           
+            if (!Physics.Raycast(ray, out info, 1000f))
+                return;
+            enemys = info.collider.gameObject;
+            
+            if (enemys.layer != lm)
+            {
+                if (enemys.tag == "enemy")
+                {
+                    shoot.hasTarget = true;
+                    shoot.enemys = this.enemys;
+                    
+                }
+                return;
+            }
+            else
+            {
+                shoot.hasTarget = false;
+            }
+                
+
             if (perfab != null)
             {
                 GameObject mouse = objectPool.GetInstance().GetObj(perfab.name);
                 mouse.transform.position = info.point;
                 mouse.transform.rotation = perfab.transform.rotation;
             }
-
-              //  GameObject.Instantiate(perfab, info.point,perfab.transform.rotation);
 
             target = info.point;
             
@@ -65,25 +93,15 @@ public class Player : MonoBehaviour {
         {
             direction = Vector3.zero;
             target = transform.position;
-
         }
 
         target.y = this.transform.position.y;
         this.transform.LookAt(target);
-        characterController.SimpleMove(direction.normalized * speed);
-        anim.SetFloat(speedID, Mathf.Clamp01(Mathf.Abs(direction.sqrMagnitude)));
-        //anim.SetFloat(speedRotateID, direction.z * 126);
 
-        //anim.SetFloat(speedID, Input.GetAxis("Vertical"));
-        //anim.SetFloat(horizontalID, Input.GetAxis("Horizontal"));
-        //if (Input.GetKeyDown(KeyCode.LeftShift))
-        //{
-        //    anim.SetBool(isSpeedUpID, true);
-        //}
-        //if (Input.GetKeyUp(KeyCode.LeftShift))
-        //{
-        //    anim.SetBool(isSpeedUpID, false);
-        //}
+        gameObject.transform.position += direction.normalized * speed*Time.deltaTime;
+
+        anim.SetFloat(speedID, Mathf.Clamp01(Mathf.Abs(direction.sqrMagnitude)));
+      
     }
 
     void Step()

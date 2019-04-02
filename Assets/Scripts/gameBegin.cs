@@ -7,10 +7,11 @@ public class gameBegin : MonoBehaviour {
 
     public GameObject start;
     private int isFirst = 0;
+    private bool isStart = true;
     VideoPlayer vp = null;
 	// Use this for initialization
 	void Start () {
-
+        PlayerPrefs.DeleteAll();
             vp = Camera.main.GetComponent<VideoPlayer>();
             vp.Play();
             
@@ -19,7 +20,11 @@ public class gameBegin : MonoBehaviour {
     }
     private void Update()
     {
-        wait();
+        if (isStart)
+        {
+            wait();
+        }
+        
     }
 
     // Update is called once per frame
@@ -28,6 +33,7 @@ public class gameBegin : MonoBehaviour {
         if ((ulong)vp.frame >= vp.frameCount-15)
         {
             start.SetActive(true);
+            isStart = false;
         }
         
     }

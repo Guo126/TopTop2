@@ -6,6 +6,7 @@ public class Goto : MonoBehaviour {
 
     public GameObject des01 ;
 
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player"|| other.gameObject.tag == "Weapon")

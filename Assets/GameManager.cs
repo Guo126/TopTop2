@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Awake() {
-        hero_index = 4;
+       // hero_index = 4;
+        hero_index = PlayerPrefs.GetInt("hero_index");
         hero = (GameObject)Instantiate(Resources.Load("Hero/" + hero_index.ToString()));
         hero.transform.SetParent(players.transform);
         hero.transform.position = players.transform.position;

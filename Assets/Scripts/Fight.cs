@@ -83,6 +83,7 @@ public class Fight : MonoBehaviour {
     {
         enemys.gameObject.GetComponent<GhostBehaviour>().ghostBlood -= PlayerMes.getInstance().Attack;
         MusicManager.Instance.PlayMusic(ac[Random.Range(0,2)]);
+
     }
 
 

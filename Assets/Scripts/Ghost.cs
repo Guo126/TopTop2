@@ -98,12 +98,5 @@ public class Ghost : MonoBehaviour
         moveSpeed = ms;
         isFightStatus = ifs;
     }
-    //public void SetBlood(int b)
-    //{
-    //    blood = b;
-    //}
-    //public int GetBlood()
-    //{
-    //    return blood;
-    //}
+    
 }

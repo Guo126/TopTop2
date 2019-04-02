@@ -17,7 +17,7 @@ public class Shoot : MonoBehaviour {
     private Player player;
     float dis = 0;
     public bool hasTarget = false;
-    GameObject enemys = null;
+    public GameObject enemys = null;
     private float timer = 2;
     public List<AudioClip> clips;
 
@@ -58,44 +58,24 @@ public class Shoot : MonoBehaviour {
 
     void shootTo()
     {
-        if (Input.GetMouseButtonDown(1))
+       
+        if (hasTarget)
         {
-            screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-            Vector3 mousePositionOnScreen = Input.mousePosition;
-            //让场景中的Z=鼠标坐标的Z
-            mousePositionOnScreen.z = screenPosition.z;
-            //将相机中的坐标转化为世界坐标
-            mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePositionOnScreen);
-           
-            
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                {
-                     enemys = hit.collider.gameObject;
-
-                if (enemys.tag == "enemy")
-                {
-                    hasTarget = true;
-                    transform.LookAt(enemys.transform.parent.parent);
-                    //Debug.Log(enemys.name);
-                }
-                else
-                {
-                    hasTarget = false;
-                    enemys = null;
-                    Animator animator = transform.GetComponent<Animator>();
-                    animator.SetBool("isAttacking", false);
-                }
-               
-            }
+            transform.LookAt(new Vector3(enemys.transform.parent.parent.position.x,transform.position.y, enemys.transform.parent.parent.position.z));
         }
-  
+        else
+        {
+            enemys = null;
+            Animator animator = transform.GetComponent<Animator>();
+            animator.SetBool("isAttacking", false);
+        }
+          
     }
 
     void startAttack()
     {
         if (enemys == null) return;
+        
         dis = (gameObject.transform.position - enemys.transform.position).magnitude;
         Animator animator = transform.GetComponent<Animator>();
         if (dis <= attackRange && hasTarget)
@@ -106,8 +86,8 @@ public class Shoot : MonoBehaviour {
         }
         else if (dis > attackRange)
         {
-            // hasTarget = false;
-            //enemys = null;
+            
+            player.target = new Vector3(enemys.transform.position.x, player.transform.position.y, enemys.transform.position.z);
             animator.SetBool("isAttacking", false);
         }
     }

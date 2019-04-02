@@ -34,11 +34,13 @@ public class changeMenu : MonoBehaviour {
     {
         if (index == 0)
         {
-            Camera.main.GetComponent<VideoPlayer>().clip = story1;
-            Camera.main.GetComponent<VideoPlayer>().Play();
-            PlayerPrefs.SetInt("isFirst", 1);
-            Invoke("wait", 1.5f);
-            Invoke("wait2", 92f);
+            //Camera.main.GetComponent<VideoPlayer>().clip = story1;
+            //Camera.main.GetComponent<VideoPlayer>().Play();
+            //PlayerPrefs.SetInt("isFirst", 1);
+            //Invoke("wait", 1.5f);
+            //Invoke("wait2", 92f);
+            wait();
+            wait2();
 
         }
         else if(index == 1)

@@ -10,6 +10,9 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
     [SerializeField] private GameObject equip;
     [SerializeField] private Button useButton;
     [SerializeField] private Button deleteButton;
+
+    [SerializeField]
+    private Weapon weapon;
     
     private GameObject g;
     public IUnityEvent op;
@@ -51,6 +54,9 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
                 Destory();
             }
         );
+
+
+        weapon = GameObject.FindObjectOfType<Weapon>();
     }
 
     public void OnMouseEnter()
@@ -329,6 +335,7 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
             if (item.addAtk != 0)
             {
                 PlayerMes.getInstance().Attack += item.addAtk;
+                weapon.SetColor(new Color(70/255,  1, 1));
                 op.Invoke(2);
             }
             if (item.addDef != 0)
