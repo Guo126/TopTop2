@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 114181393769842156}
   - component: {fileID: 82061724745044692}
   - component: {fileID: 136546327764251522}
+  - component: {fileID: 114097624225296782}
   m_Layer: 0
   m_Name: 1
   m_TagString: Player
@@ -972,6 +973,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114097624225296782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587948657994348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c235114c72d72eb47a567ec708d343c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  chatting: {fileID: 1160423573086938, guid: 722fca76c981eb945b8403dad4c0e9fc, type: 2}
+  isChat: 0
 --- !u!114 &114181393769842156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -991,6 +1006,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 40caf7f7ba3b1f04b9dc88ad42856a67, type: 3}
   - {fileID: 8300000, guid: efbe7ae7a0a5c9643a377b78bd050570, type: 3}
   - {fileID: 8300000, guid: 208617cb9c92e4c4e9968a65463ed434, type: 3}
+  shoot: {fileID: 0}
+  fight: {fileID: 0}
+  chat: {fileID: 0}
 --- !u!114 &114600614048317612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1003,6 +1021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 23
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114965386740872838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1014,6 +1033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cbdb7e04e2c42a498f88677eca2931c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemys: {fileID: 0}
   ac: []
   hasTarget: 0
   range: 1

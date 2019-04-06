@@ -140,12 +140,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4164089708734606}
   - component: {fileID: 95189443879511146}
-  - component: {fileID: 143254494046190150}
   - component: {fileID: 114044088095054992}
   - component: {fileID: 54642723861207860}
   - component: {fileID: 114347661791399336}
   - component: {fileID: 82834503488772400}
   - component: {fileID: 136809497392530652}
+  - component: {fileID: 114829498916170800}
   m_Layer: 0
   m_Name: 4
   m_TagString: Player
@@ -1158,6 +1158,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 40caf7f7ba3b1f04b9dc88ad42856a67, type: 3}
   - {fileID: 8300000, guid: efbe7ae7a0a5c9643a377b78bd050570, type: 3}
   - {fileID: 8300000, guid: 208617cb9c92e4c4e9968a65463ed434, type: 3}
+  shoot: {fileID: 0}
+  fight: {fileID: 0}
+  chat: {fileID: 0}
 --- !u!114 &114248297841197280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1182,6 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cbdb7e04e2c42a498f88677eca2931c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemys: {fileID: 0}
   ac:
   - {fileID: 8300000, guid: f670325c4356f0b4e98f57a1ed65192d, type: 3}
   - {fileID: 8300000, guid: c1ef220cb05059d428ebc7518735abef, type: 3}
@@ -1199,6 +1203,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a8f138f1ed5b443bc4e5a52f0573f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114829498916170800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1315730131021518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c235114c72d72eb47a567ec708d343c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  chatting: {fileID: 1160423573086938, guid: 722fca76c981eb945b8403dad4c0e9fc, type: 2}
+  isChat: 0
 --- !u!136 &136809497392530652
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1279,20 +1297,3 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.106906354, y: -0.019914344, z: -0.00000062584877}
     m_Extent: {x: 0.6373319, y: 0.20383312, z: 0.3740506}
   m_DirtyAABB: 0
---- !u!143 &143254494046190150
-CharacterController:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1315730131021518}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2.54
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.2, z: 0}

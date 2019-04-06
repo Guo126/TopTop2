@@ -1037,6 +1037,7 @@ GameObject:
   - component: {fileID: 114968891937040684}
   - component: {fileID: 82343999945081010}
   - component: {fileID: 136020800082070494}
+  - component: {fileID: 114450866286907172}
   m_Layer: 0
   m_Name: 2
   m_TagString: Player
@@ -2219,6 +2220,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f7243a85331c48b2f3912f803ed7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114450866286907172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1969785008174858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c235114c72d72eb47a567ec708d343c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  chatting: {fileID: 1160423573086938, guid: 722fca76c981eb945b8403dad4c0e9fc, type: 2}
+  isChat: 0
 --- !u!114 &114968891937040684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2230,6 +2245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cbdb7e04e2c42a498f88677eca2931c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemys: {fileID: 0}
   ac:
   - {fileID: 8300000, guid: f670325c4356f0b4e98f57a1ed65192d, type: 3}
   - {fileID: 8300000, guid: 70542d39f2230784b864c04621544e33, type: 3}
@@ -2255,6 +2271,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 40caf7f7ba3b1f04b9dc88ad42856a67, type: 3}
   - {fileID: 8300000, guid: efbe7ae7a0a5c9643a377b78bd050570, type: 3}
   - {fileID: 8300000, guid: 208617cb9c92e4c4e9968a65463ed434, type: 3}
+  shoot: {fileID: 0}
+  fight: {fileID: 0}
+  chat: {fileID: 0}
 --- !u!136 &136020800082070494
 CapsuleCollider:
   m_ObjectHideFlags: 1

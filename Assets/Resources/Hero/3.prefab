@@ -156,12 +156,12 @@ GameObject:
   - component: {fileID: 4494078693805080}
   - component: {fileID: 95270131485920778}
   - component: {fileID: 54782452734445774}
-  - component: {fileID: 143792817774585694}
   - component: {fileID: 114468019893626512}
   - component: {fileID: 114413520317033202}
   - component: {fileID: 114817252009327024}
   - component: {fileID: 82186633240659626}
   - component: {fileID: 136844221235463726}
+  - component: {fileID: 114001297076067034}
   m_Layer: 0
   m_Name: 3
   m_TagString: Player
@@ -988,6 +988,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114001297076067034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461646847341452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c235114c72d72eb47a567ec708d343c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  chatting: {fileID: 1160423573086938, guid: 722fca76c981eb945b8403dad4c0e9fc, type: 2}
+  isChat: 0
 --- !u!114 &114413520317033202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1026,6 +1040,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 40caf7f7ba3b1f04b9dc88ad42856a67, type: 3}
   - {fileID: 8300000, guid: efbe7ae7a0a5c9643a377b78bd050570, type: 3}
   - {fileID: 8300000, guid: 208617cb9c92e4c4e9968a65463ed434, type: 3}
+  shoot: {fileID: 0}
+  fight: {fileID: 0}
+  chat: {fileID: 0}
 --- !u!114 &114817252009327024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1115,20 +1132,3 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.09346819, y: 0.021879926, z: 0.024168268}
     m_Extent: {x: 0.62389374, y: 0.20677263, z: 0.3702249}
   m_DirtyAABB: 0
---- !u!143 &143792817774585694
-CharacterController:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461646847341452}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2.45
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}

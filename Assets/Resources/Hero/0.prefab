@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 114824390225667440}
   - component: {fileID: 82777930330197588}
   - component: {fileID: 136895860960392828}
+  - component: {fileID: 114250546845097366}
   m_Layer: 0
   m_Name: 0
   m_TagString: Player
@@ -977,6 +978,20 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 21fb0f006574c59439378b33deda19b8, type: 3}
   - {fileID: 8300000, guid: a298291107865d842b5dcf49cf4c32e2, type: 3}
+--- !u!114 &114250546845097366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1551680839741994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c235114c72d72eb47a567ec708d343c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  chatting: {fileID: 1160423573086938, guid: 722fca76c981eb945b8403dad4c0e9fc, type: 2}
+  isChat: 0
 --- !u!114 &114824390225667440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -998,6 +1013,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 208617cb9c92e4c4e9968a65463ed434, type: 3}
   shoot: {fileID: 0}
   fight: {fileID: 0}
+  chat: {fileID: 0}
 --- !u!136 &136895860960392828
 CapsuleCollider:
   m_ObjectHideFlags: 1
