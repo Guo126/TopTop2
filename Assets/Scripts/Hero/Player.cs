@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
             if (!Physics.Raycast(ray, out info, 1000f))
                 return;
             enemys = info.collider.gameObject;
-            
+            print(enemys.name);
             if (enemys.layer != lm)
             {
                 Action();
@@ -66,6 +66,7 @@ public class Player : MonoBehaviour {
             }
             else
             {
+                
                 chat.isChat = false;
                 if (shoot != null)
                 {
@@ -131,13 +132,16 @@ public class Player : MonoBehaviour {
             }
             
 
-        }else if (enemys.tag == "shop1")
+        }else if (enemys.tag == "shop")
         {
             target =enemys.transform.position;
             chat.isChat = true;
             chat.target = enemys;
 
             // dis = (enemys.transform.position - transform.position).magnitude;
+        }else if (enemys.tag == "magicDoor")
+        {
+            target = enemys.transform.position;
         }
         
               

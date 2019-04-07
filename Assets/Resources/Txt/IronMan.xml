@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialogues>
+  <dialogue>
+    <role>A</role>
+    <detail>你好,我的勇士！</detail>
+  </dialogue>
+  <dialogue>
+    <role>A</role>
+    <detail>我可是通灵村最厉害的铸造师！</detail>
+  </dialogue>
+  <dialogue>
+    <role>A</role>
+    <detail>来看看我的宝贝吧！</detail>
+  </dialogue>
+  
+</dialogues>

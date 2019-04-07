@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialogues>
+  <dialogue>
+    <role>A</role>
+    <detail>你来了,我的勇士！</detail>
+  </dialogue>
+  <dialogue>
+    <role>B</role>
+    <detail>请问您是。。。</detail>
+  </dialogue>
+  <dialogue>
+    <role>A</role>
+    <detail>我是谁你不需要知道，我是来帮你的。</detail>
+  </dialogue>
+  <dialogue>
+    <role>A</role>
+    <detail>你需要收集三块符石碎片，才能打开通往后面的道路。</detail>
+  </dialogue>
+  <dialogue>
+    <role>B</role>
+    <detail>这样啊，谢谢您。</detail>
+  </dialogue>
+</dialogues>

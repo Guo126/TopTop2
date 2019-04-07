@@ -12,12 +12,13 @@ public class ChatWith : MonoBehaviour {
     private Player player;
     public GameObject chatting;
     public  bool isChat =false;
-    private  GameObject mainCanvas;
+    private  GameObject chatCanvas;
 
     private void Start()
     {
-        mainCanvas = GameObject.Find("Main_Canvas");
-         animator = transform.GetComponent<Animator>();
+        chatCanvas = GameObject.Find("Main_Canvas/Chat");
+        chatCanvas.SetActive(false);
+        animator = transform.GetComponent<Animator>();
         player = gameObject.GetComponent<Player>();
     }
     private void Update()
@@ -34,11 +35,10 @@ public class ChatWith : MonoBehaviour {
             if (dis <= chatRange && isChat)
             {
                 player.target = this.transform.position;
-                GameObject chatCanvas = Instantiate(chatting, mainCanvas.transform);
-                if (chatCanvas)
-                {
-
-                }
+                
+                chatCanvas.SetActive(true);
+                chatCanvas.GetComponent<ShowWords>().xmlName = target.name;
+                
             }
         }
        
