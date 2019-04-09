@@ -15,7 +15,6 @@ public class DragonAnimEvent : MonoBehaviour {
         PlayerMes.getInstance().BloodNum -= hurt;
         OnAttack.Invoke((float)PlayerMes.getInstance().BloodNum / PlayerMes.getInstance().BloodMax);
     
-
     }
     private void OnDestroy()
     {

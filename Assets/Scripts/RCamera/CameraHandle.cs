@@ -39,23 +39,20 @@ public class CameraHandle : MonoBehaviour {
 			{
 
 				collideredObjects.Add(hits[i].collider.gameObject);//得到现在的
-                print(collideredObjects[i].name + "22");
+                
                  SetMaterialsColor(collideredObjects[i].GetComponent<Renderer>(),true);
-               // killObjects(collideredObjects[i], true);
+                print(collideredObjects[i].name+"sa");
             }
         }
         //上次与本次对比，本次还存在的物体则赋值为null
         for (int i = 0; i < bufferOfCollideredObjects.Count; i++)
-        {
-            
+        {          
             for (int j = 0; j < collideredObjects.Count; j++)
             {
                 if (collideredObjects[j] != null)
-                {
-                   // print(bufferOfCollideredObjects[i].name+"   "+collideredObjects[i].name);
+                {                 
                     if (bufferOfCollideredObjects[i].name == collideredObjects[j].name)
-                    {
-                        print("sa");
+                    {                       
                         bufferOfCollideredObjects[i] = null;
                         break;
                     }
@@ -65,14 +62,12 @@ public class CameraHandle : MonoBehaviour {
         //把上次的还原，这次的透明
         for (int i = 0; i < bufferOfCollideredObjects.Count; i++)
         {
-            if (bufferOfCollideredObjects != null)
+            if (bufferOfCollideredObjects[i] != null)
             {
                 print(bufferOfCollideredObjects[i].name);
                 SetMaterialsColor(bufferOfCollideredObjects[i].GetComponent<Renderer>(),false);
             }
-
-            // killObjects(bufferOfCollideredObjects[i], false);
-
+            
         }
         
     }
@@ -82,11 +77,12 @@ public class CameraHandle : MonoBehaviour {
 	{
 		if(isClear)
 		{
-			int materialsNumber = r.sharedMaterials.Length;
+            
+            int materialsNumber = r.sharedMaterials.Length;
 			for (int i = 0; i < materialsNumber; i++)
 			{
                 Color _color = r.materials[i].color;
-                _color.a = 0.6f;
+                _color.a = 0;
                 r.materials[i].SetColor("_Color", _color);
 
             }
@@ -103,16 +99,5 @@ public class CameraHandle : MonoBehaviour {
             }
         }
 	}
-    //去掉遮挡物
-    void killObjects(GameObject @object,bool isOprate)
-    {
-        if (isOprate)
-        {
-            @object.SetActive(false);
-        }
-        else
-        {
-            @object.SetActive(true);
-        }
-    }
+   
 }

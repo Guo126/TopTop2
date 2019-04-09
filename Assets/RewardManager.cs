@@ -19,6 +19,14 @@ public class RewardManager : MonoBehaviour {
         }
     }
 
+    public void Chest(int Clevel)
+    {
+        if(Clevel == 1)
+        {
+            showTip(gold, 100);
+        }
+    }
+
     void showTip(Sprite g,int num)
     {
         GameObject rw = Instantiate(reward, mainCanvas);

@@ -34,8 +34,7 @@ public class ChatWith : MonoBehaviour {
             dis = (gameObject.transform.position - target.transform.position).magnitude;
             if (dis <= chatRange && isChat)
             {
-                player.target = this.transform.position;
-                
+                player.target = this.transform.position;         
                 chatCanvas.SetActive(true);
                 chatCanvas.GetComponent<ShowWords>().xmlName = target.name;
                 

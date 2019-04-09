@@ -76,8 +76,9 @@ public class Player : MonoBehaviour {
 
                         break;
                     }
-                    else if (info.tag == "shop")
+                    else if (info.tag == "NPC")
                     {
+                        print("pp");
                         target = info.transform.position;
                         chat.isChat = true;
                         chat.target = info;
@@ -85,6 +86,11 @@ public class Player : MonoBehaviour {
                         // dis = (enemys.transform.position - transform.position).magnitude;
                     }
                     else if (info.tag == "magicDoor")
+                    {
+                        target = info.transform.position;
+                        break;
+                    }
+                    else if (info.tag == "Chest")
                     {
                         target = info.transform.position;
                         break;
@@ -141,9 +147,5 @@ public class Player : MonoBehaviour {
         gameObject.GetComponent<AudioSource>().Play();
     }
     
-    void Action()
-    {
-        
-        
-    }
+   
 }
