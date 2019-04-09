@@ -25,15 +25,13 @@ public class ShowWords : MonoBehaviour {
         chatList = new List<string>();
         //string data = Resources.Load("Txt/shop").ToString();
         //xmlDocument.Load(data);
-       
-       
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (!hasXml && xmlName!="none")
         {
-            print(hasXml+" " + xmlName);
+
             
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(Application.dataPath + "/Resources/Txt/" + xmlName + ".xml");
@@ -59,16 +57,15 @@ public class ShowWords : MonoBehaviour {
             else
             {
                 //对话完了              
-                player.GetComponent<ChatWith>().isChat = false;             
+                player.GetComponent<ChatWith>().isChat = false;
+                gameObject.SetActive(false);
+                
             }
         }
 
        
 	}
-
-   
-
-
+    
     private void chat_handle(int index)
     {
         //切割数组

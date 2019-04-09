@@ -25,7 +25,7 @@ public class Player : MonoBehaviour {
     public GameObject perfab;
     
     public AudioClip[] ac = new AudioClip[4];
-    private GameObject enemys;
+    private GameObject info;
     public Shoot shoot;
     public Fight fight;
     public ChatWith chat;
@@ -54,46 +54,71 @@ public class Player : MonoBehaviour {
             LayerMask lm =  LayerMask.NameToLayer("Road");          
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
-            RaycastHit info;
-            if (!Physics.Raycast(ray, out info, 1000f))
-                return;
-            enemys = info.collider.gameObject;
-            print(enemys.name);
-            if (enemys.layer != lm)
+            RaycastHit[] infos;
+            infos = Physics.RaycastAll(ray);
+            for(int i = 0; i < infos.Length; i++)
             {
-                Action();
-                return;
-            }
-            else
-            {
-                
-                chat.isChat = false;
-                if (shoot != null)
+                info = infos[i].collider.gameObject;
+                if (info.layer != lm)
                 {
-                    shoot.hasTarget = false;
+                    if (info.tag == "enemy")
+                    {
+                        if (shoot != null)
+                        {
+                            shoot.hasTarget = true;
+                            shoot.enemys = this.info;
+                        }
+                        else
+                        {
+                            fight.hasTarget = true;
+                            fight.enemys = this.info;
+                        }
+
+                        break;
+                    }
+                    else if (info.tag == "shop")
+                    {
+                        target = info.transform.position;
+                        chat.isChat = true;
+                        chat.target = info;
+                        break;
+                        // dis = (enemys.transform.position - transform.position).magnitude;
+                    }
+                    else if (info.tag == "magicDoor")
+                    {
+                        target = info.transform.position;
+                        break;
+                    }
+                    continue;
                 }
                 else
                 {
-                    fight.hasTarget = false;
+                    chat.isChat = false;
+                    if (shoot != null)
+                    {
+                        shoot.hasTarget = false;
+                    }
+                    else
+                    {
+                        fight.hasTarget = false;
+                    }
+                    if (perfab != null)
+                    {
+                        GameObject mouse = objectPool.GetInstance().GetObj(perfab.name);
+                        mouse.transform.position = infos[i].point;
+                        mouse.transform.rotation = perfab.transform.rotation;
+                    }
+
+                    target = infos[i].point;
+                    break;
+
                 }
-                
-            }
-                
-
-            if (perfab != null)
-            {
-                GameObject mouse = objectPool.GetInstance().GetObj(perfab.name);
-                mouse.transform.position = info.point;
-                mouse.transform.rotation = perfab.transform.rotation;
-            }
-
-            target = info.point;
-            
+            }           
         }
 
         direction = target - transform.position;
         direction.y = 0;
-        //direction = direction.normalized;
+       
 
         if (direction.magnitude < 0.3f)
         {
@@ -118,34 +143,7 @@ public class Player : MonoBehaviour {
     
     void Action()
     {
-        if (enemys.tag == "enemy")
-        {
-            if (shoot != null)
-            {
-                shoot.hasTarget = true;
-                shoot.enemys = this.enemys;
-            }
-            else
-            {
-                fight.hasTarget = true;
-                fight.enemys = this.enemys;
-            }
-            
-
-        }else if (enemys.tag == "shop")
-        {
-            target =enemys.transform.position;
-            chat.isChat = true;
-            chat.target = enemys;
-
-            // dis = (enemys.transform.position - transform.position).magnitude;
-        }else if (enemys.tag == "magicDoor")
-        {
-            target = enemys.transform.position;
-        }
         
-              
-       
         
     }
 }
