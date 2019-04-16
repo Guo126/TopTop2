@@ -31,10 +31,8 @@ public class ShowWords : MonoBehaviour {
 	void Update () {
         if (!hasXml && xmlName!="none")
         {
-
-            
             XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(Application.dataPath + "/Resources/Txt/" + xmlName + ".xml");
+            xmlDocument.Load(Application.streamingAssetsPath + "/Save/" + xmlName + ".xml");
            // print(Application.dataPath + "/Resources/Txt/" + xmlName + ".xml");
             //找到dialogues的所有子节点
             XmlNodeList xmlNodeList = xmlDocument.SelectSingleNode("dialogues").ChildNodes;
@@ -58,6 +56,7 @@ public class ShowWords : MonoBehaviour {
             {
                 //对话完了              
                 player.GetComponent<ChatWith>().isChat = false;
+                player.GetComponent<Player>().isChat = false;
                 gameObject.SetActive(false);
                 
             }

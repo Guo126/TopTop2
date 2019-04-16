@@ -8,6 +8,7 @@ public class CameraHandle : MonoBehaviour {
     private GameObject Player;
 	private List<GameObject> collideredObjects;//本次射线hit到的GameObject
 	private List<GameObject> bufferOfCollideredObjects;//上次射线hit到的GameObject
+    public Material material;
 	
 	void Start () {
 		collideredObjects=new List<GameObject>();
@@ -38,10 +39,9 @@ public class CameraHandle : MonoBehaviour {
 			if(hits[i].collider.gameObject.tag!="Player")
 			{
 
-				collideredObjects.Add(hits[i].collider.gameObject);//得到现在的
-                
-                 SetMaterialsColor(collideredObjects[i].GetComponent<Renderer>(),true);
-                print(collideredObjects[i].name+"sa");
+				 collideredObjects.Add(hits[i].collider.gameObject);//得到现在的              
+                 SetMaterialsColor(collideredObjects[i].GetComponent<Renderer>(),true);//变透明
+                //SetMaterials(collideredObjects[i].GetComponent<Renderer>(), true);
             }
         }
         //上次与本次对比，本次还存在的物体则赋值为null
@@ -64,40 +64,71 @@ public class CameraHandle : MonoBehaviour {
         {
             if (bufferOfCollideredObjects[i] != null)
             {
-                print(bufferOfCollideredObjects[i].name);
+               // SetMaterials(bufferOfCollideredObjects[i].GetComponent<Renderer>(), false);
                 SetMaterialsColor(bufferOfCollideredObjects[i].GetComponent<Renderer>(),false);
             }
             
         }
         
     }
-	
-	//是否搞透明
-	void SetMaterialsColor(Renderer r,bool isClear)
-	{
-		if(isClear)
-		{
-            
-            int materialsNumber = r.sharedMaterials.Length;
-			for (int i = 0; i < materialsNumber; i++)
-			{
+
+    //是否搞透明
+    void SetMaterialsColor(Renderer r, bool isClear)
+    {
+
+
+        int materialsNumber = r.sharedMaterials.Length;
+        if (isClear)
+        {
+            for (int i = 0; i < materialsNumber; i++)
+            {
                 Color _color = r.materials[i].color;
                 _color.a = 0;
                 r.materials[i].SetColor("_Color", _color);
 
             }
         }
-		else
-		{
-			int materialsNumber = r.sharedMaterials.Length;
-			for (int i = 0; i < materialsNumber; i++)
-			{
+        else
+        {
+
+            for (int i = 0; i < materialsNumber; i++)
+            {
                 Color _color = r.materials[i].color;
                 _color.a = 1.0f;
                 r.materials[i].SetColor("_Color", _color);
 
             }
+
+
         }
-	}
-   
+    }
+
+    void SetMaterials(Renderer r, bool isClear)
+    {
+
+        int materialsNumber = r.sharedMaterials.Length;
+        if (isClear)
+        {
+            for (int i = 0; i < materialsNumber; i++)
+            {
+               // Color _color = r.materials[i].color;
+                r.materials[i] = this.material;
+
+
+
+            }
+        }
+        else
+        {
+
+            for (int i = 0; i < materialsNumber; i++)
+            {
+                r.materials[i] = material;
+
+            }
+
+
+        }
+    }
+
 }

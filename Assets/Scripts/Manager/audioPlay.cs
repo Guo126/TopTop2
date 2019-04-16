@@ -63,7 +63,7 @@ public class audioPlay : MonoBehaviour {
     }
 
 
-    void videoChange()
+    public void videoChange()
     {
         videoPlayer.Play();
     }

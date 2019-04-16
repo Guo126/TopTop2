@@ -14,11 +14,11 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Awake() {
-        hero_index = 4;
+        hero_index = 3;
         //hero_index = PlayerPrefs.GetInt("hero_index");
         hero = (GameObject)Instantiate(Resources.Load("Hero/" + hero_index.ToString()));
         hero.transform.SetParent(players.transform);
-        hero.transform.position = players.transform.position;
+        hero.transform.localPosition = new Vector3(0,0,0);
         switch (hero_index)
         {
             case 0:
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
         
     }
 
-    void HeroDead()
+    public void HeroDead()
     {
         if (PlayerMes.getInstance().BloodNum <= 0)
         {

@@ -23,6 +23,8 @@ TagManager:
   - Weapon
   - Chest
   - NPC
+  - npc
+  - actionTrigger
   layers:
   - Default
   - TransparentFX
@@ -33,8 +35,8 @@ TagManager:
   - 
   - 
   - Road
-  - 
-  - 
+  - Tree
+  - StoryThing
   - 
   - 
   - 

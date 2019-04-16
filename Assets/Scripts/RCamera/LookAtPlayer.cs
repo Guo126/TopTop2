@@ -49,14 +49,14 @@ public class LookAtPlayer : MonoBehaviour {
            // transform.RotateAround(transform.position, Vector3.right, Input.GetAxis("Mouse Y") * 10);
 
 
-            float x = transform.eulerAngles.x;
+            //float x = transform.eulerAngles.x;
             
-            //控制移动范围
-            if (x < 20 || x > 52)
-            {
-              //  transform.position = pos1;
-                transform.eulerAngles = rot1;
-            }
+            ////控制移动范围
+            //if (x < 20 || x > 52)
+            //{
+            //  //  transform.position = pos1;
+            //    transform.eulerAngles = rot1;
+            //}
 
             //  更新相对差值 
             // offset = target.transform.position - this.transform.position;
