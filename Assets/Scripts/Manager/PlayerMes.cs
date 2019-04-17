@@ -15,6 +15,7 @@ public class PlayerMes : MonoBehaviour {
     private int hidePer;
     private int bigHit;
     private int gold;
+    private int snum = 0;
 
     public void Init(string lv, int bloodNum,int bMax, int magicNum, int mMax,int attack, int defence, int hidePer, int bigHit,int gold)
     {
@@ -175,6 +176,19 @@ public class PlayerMes : MonoBehaviour {
         set
         {
             gold = value;
+        }
+    }
+
+    public int Snum
+    {
+        get
+        {
+            return snum;
+        }
+
+        set
+        {
+            snum = value;
         }
     }
 

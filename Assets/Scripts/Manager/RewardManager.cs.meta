@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 562b2ff98821d1c408a37db3aab20848
+timeCreated: 1552964071
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - reward: {instanceID: 0}
+  - gold: {instanceID: 0}
+  - exp: {instanceID: 0}
+  - s1: {fileID: 21300000, guid: 3c7644ee96c4f2242ac03437d2b980df, type: 3}
+  - s2: {fileID: 21300000, guid: abab7e1afa483b74584edaf444e7f141, type: 3}
+  - s3: {fileID: 21300000, guid: a41dcb0f02435eb4b812a522f88ea859, type: 3}
+  - mainCanvas: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

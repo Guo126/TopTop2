@@ -12,7 +12,7 @@ public class Fight : MonoBehaviour {
     public List<AudioClip> ac;
     public  bool hasTarget;
     float dis = 0;
-    public float range = 1;
+    public float range = 1.4f;
 
     // Use this for initialization
     void Start () {
@@ -44,11 +44,15 @@ public class Fight : MonoBehaviour {
 
     void startAttack()
     {
+
         if (enemys == null) return;
+        
         dis = (gameObject.transform.position - enemys.transform.position).magnitude;
+        print(dis + "   " + range);
         Animator animator = transform.GetComponent<Animator>();
         if (dis <= range && hasTarget)
         {
+            print("startFight");
             animator.SetBool("isAttacking", true);
             player.target = this.transform.position;
         }

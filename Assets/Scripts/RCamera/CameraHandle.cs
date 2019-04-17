@@ -36,7 +36,7 @@ public class CameraHandle : MonoBehaviour {
 		
 		for(int i=0;i<hits.Length;i++)
 		{
-			if(hits[i].collider.gameObject.tag!="Player")
+			if(hits[i].collider.gameObject.tag!="Player"|| hits[i].collider.gameObject.tag != "enemy")
 			{
 
 				 collideredObjects.Add(hits[i].collider.gameObject);//得到现在的              

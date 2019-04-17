@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class control : MonoBehaviour {
 
-    private string[] heroNames = new string[5] { "巫师" ,"领主","剑士","射手","战士"};
-    public  int hero_index = 2;
+    private string[] heroNames = new string[4] { "巫师" ,"领主","射手","战士"};
+    public  int hero_index = 0;
     public GameObject heroName;
     public GameObject heroObject;
     public GameObject[] heros;
@@ -39,7 +39,7 @@ public class control : MonoBehaviour {
     public void preHero()
     {
          
-        if (hero_index < 5 && hero_index!=0)
+        if (hero_index < 4 && hero_index!=0)
         {
             Camera.main.transform.position = Vector3.Lerp
                 (Camera.main.transform.position, new Vector3(Camera.main.transform.position.x - 5, 0, -10), 1f);
@@ -56,7 +56,7 @@ public class control : MonoBehaviour {
     public void nextHero()
     {
             
-        if (hero_index >= 0 && hero_index != 4)
+        if (hero_index >= 0 && hero_index != 3)
         {
             Camera.main.transform.position = Vector3.Lerp
             (Camera.main.transform.position, new Vector3(Camera.main.transform.position.x + 5, 0, -10), 1f);
@@ -72,7 +72,7 @@ public class control : MonoBehaviour {
 
     void isCanTurn()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (i == hero_index)
             {

@@ -92,6 +92,7 @@ public class Player : MonoBehaviour {
                     if (info.tag == "enemy")
                     {
                         print("enemy");
+                       // transform.LookAt(info.transform);
                         if (shoot != null)
                         {
 
@@ -100,6 +101,7 @@ public class Player : MonoBehaviour {
                         }
                         else
                         {
+                            print("fight");
                             fight.hasTarget = true;
                             fight.enemys = this.info.transform.GetChild(0).GetChild(0).gameObject;
                         }
@@ -118,7 +120,7 @@ public class Player : MonoBehaviour {
                         else if (info.name == "magic03")
                         {
                             info.GetComponent<selfActionThr>().Action();
-                        }else if (info.name == "magic04")
+                        }else if (PlayerMes.getInstance().Snum==3&&info.name == "magic04")
                         {
                             info.GetComponent<SelfStory>().showStory();
                             
@@ -166,7 +168,7 @@ public class Player : MonoBehaviour {
                     if (perfab != null)
                     {
                         GameObject mouse = objectPool.GetInstance().GetObj(perfab.name);
-                        mouse.transform.position = info.transform.position;
+                        mouse.transform.position = new Vector3(infoPoint.point.x, infoPoint.point.y+0.2f, infoPoint.point.z);
                         mouse.transform.rotation = perfab.transform.rotation;
                     }
                     // target = Camera.main.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));

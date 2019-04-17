@@ -20,9 +20,9 @@ public class Weapon : MonoBehaviour {
 
     private void Start()
     {
-        mr = GetComponent<MeshRenderer>();
-        trailColor = GetComponentInChildren<TrailColor>();
-        SetColor(new Color(71 / 255, 58 / 255, 39 / 255));
+        //mr = GetComponent<MeshRenderer>();
+        //trailColor = GetComponentInChildren<TrailColor>();
+        //SetColor(new Color(71 / 255, 58 / 255, 39 / 255));
     }
 
 
@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour {
     {
         if(other.tag == "enemy")
         {
-            other.GetComponent<Hurtable>().GetHurt(damage);
+            //other.GetComponent<Hurtable>().GetHurt(damage);
         }
     }
 

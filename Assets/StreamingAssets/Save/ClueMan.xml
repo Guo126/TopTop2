@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialogues>
+  <dialogue>
+    <role>A</role>
+    <detail>你知道吗？</detail>
+  </dialogue>
+  <dialogue>
+    <role>B</role>
+    <detail>您说的是。。。</detail>
+  </dialogue>
+  <dialogue>
+    <role>A</role>
+    <detail>线索就在我附近！</detail>
+  </dialogue>
+ 
+</dialogues>

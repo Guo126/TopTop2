@@ -9,34 +9,32 @@ public class GameManager : MonoBehaviour {
     public int hero_index,needUpdate;
     public GameObject players ,hero;
     public IUnityEvent ResetBlood,ResetMagic;
-    public FUntyEvent UpdateBlood;
+    public FUntyEvent UpdateBlood,UpdateMagic;
     public List<Text> texts;
 
     // Use this for initialization
     void Awake() {
-        hero_index = 3;
-        //hero_index = PlayerPrefs.GetInt("hero_index");
+        //hero_index = 3;
+        hero_index = PlayerPrefs.GetInt("hero_index");
         hero = (GameObject)Instantiate(Resources.Load("Hero/" + hero_index.ToString()));
         hero.transform.SetParent(players.transform);
         hero.transform.localPosition = new Vector3(0,0,0);
         switch (hero_index)
         {
             case 0:
-                PlayerMes.getInstance().Init("1",400, 400, 200, 200, 60, 20, 10, 10,500);
+                PlayerMes.getInstance().Init("1",400, 400, 200, 200, 60, 5, 10, 10,500);
                 break;
             case 1:
                 
-                PlayerMes.getInstance().Init("1", 400, 400, 200, 200, 60, 20, 10, 10,500);
+                PlayerMes.getInstance().Init("1", 400, 400, 200, 200, 60, 5, 10, 10,500);
                 break;
             case 2:
-                PlayerMes.getInstance().Init("1", 400, 400, 200, 200, 60, 20, 10, 10,500);
+                PlayerMes.getInstance().Init("1", 400, 400, 200, 200, 60, 5, 10, 10,500);
                 break;
             case 3:
-                PlayerMes.getInstance().Init("1", 400, 400, 200, 200, 60, 20, 10, 10, 500);
+                PlayerMes.getInstance().Init("1", 400, 400, 200, 200, 60, 5, 10, 10, 500);
                 break;
-            case 4:
-                PlayerMes.getInstance().Init("1", 400, 400, 200, 200, 60, 20, 10, 10, 500);
-                break;
+          
         }
         ResetBlood.Invoke(PlayerMes.getInstance().BloodNum);
         ResetMagic.Invoke(PlayerMes.getInstance().MagicNum);
@@ -52,6 +50,11 @@ public class GameManager : MonoBehaviour {
             UpdateBlood.Invoke((float)PlayerMes.getInstance().BloodNum / PlayerMes.getInstance().BloodMax);          
             needUpdate = 0;
         }else if (needUpdate == 2)
+        {
+            UpdateMagic.Invoke((float)PlayerMes.getInstance().MagicNum / PlayerMes.getInstance().MagicMax);
+            needUpdate = 0;
+        }
+        else if (needUpdate == 3)
         {
             SetPlayerMes();
             needUpdate = 0;
