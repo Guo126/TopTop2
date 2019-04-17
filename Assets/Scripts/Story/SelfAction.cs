@@ -10,6 +10,7 @@ public class SelfAction : MonoBehaviour {
     public IUnityEvent reward;
     private bool isAction;
     private bool isGot=false;
+    public GameObject water; 
 
     private void Start()
     {
@@ -25,6 +26,8 @@ public class SelfAction : MonoBehaviour {
             storyThing.transform.position = Vector3.Lerp(storyThing.transform.position, storyThing.transform.position+ new Vector3(0, 1, 0), Time.deltaTime);
             if (storyThing.transform.localPosition.y >= 10.8)
             {
+                water.layer = 9;
+                water.GetComponent<MeshCollider>().isTrigger = true;
                 Invoke("Action2", 3.5f);              
                 isAction = false;
             }

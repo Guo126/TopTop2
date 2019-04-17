@@ -8,8 +8,10 @@ public class ItemsRefresh : MonoBehaviour {
     [SerializeField]private GameObject items2;
     [SerializeField]private GameObject items3;
     public List<List<Item>> bagList;
-    
+    public List<List<Item>> itemList;
+
     private string filename;
+    private string filename1;
     public static ItemsRefresh instance;
     public static ItemsRefresh Instance
     {
@@ -22,8 +24,11 @@ public class ItemsRefresh : MonoBehaviour {
     void Awake()
     {
         filename = Application.streamingAssetsPath+"/Save/GameBagData.sav";
+        filename1 = Application.streamingAssetsPath + "/Save/GameItemData.sav";
         bagList=new List<List<Item>>();
+        bagList = new List<List<Item>>();
         bagList=(List<List<Item>>)IOHelper.GetData(filename,typeof(List<List<Item>>));
+        itemList= (List<List<Item>>)IOHelper.GetData(filename1, typeof(List<List<Item>>));
         instance = this;
     }
 
@@ -31,6 +36,8 @@ public class ItemsRefresh : MonoBehaviour {
     {
         LoadItems();
     }
+
+
 
     //返回保存的所有物品
     public List<List<Item>> GetAllItems()
@@ -55,6 +62,21 @@ public class ItemsRefresh : MonoBehaviour {
         return null;
     }
 
+    public Item FindStoreItem(string strName)
+    {
+
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            for (int j = 0; j < itemList[i].Count; j++)
+            {
+                if (strName == itemList[i][j].name)
+                {
+                    return itemList[i][j];
+                }
+            }
+        }
+        return null;
+    }
     //加载所有物品
     public void LoadItems()
     {

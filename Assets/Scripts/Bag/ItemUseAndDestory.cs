@@ -11,6 +11,7 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
     [SerializeField] private Button useButton;
     [SerializeField] private Button deleteButton;
 
+
     [SerializeField]
     private Weapon weapon;
     
@@ -49,20 +50,22 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
     void Start()
     {
         trans = GameObject.Find("Main_Canvas").transform;
-        useButton.onClick.AddListener(
-            delegate ()
-            {
-                // 这里添加你想要监听的事件
-                Use();
-            }
-        );
-        deleteButton.onClick.AddListener(
-            delegate ()
-            {
-                // 这里添加你想要监听的事件
-                Destory();
-            }
-        );
+                useButton.onClick.AddListener(
+                delegate ()
+                {
+                     // 这里添加你想要监听的事件
+                    Use();
+                }
+            );
+
+            deleteButton.onClick.AddListener(
+                delegate ()
+                {
+                    // 这里添加你想要监听的事件
+                    Destory();
+                }
+            );
+
 
 
         weapon = GameObject.FindObjectOfType<Weapon>();
@@ -103,6 +106,7 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
         GUILayout.Label(item.realName, style1);
         GUILayout.Label("  ", style1);
         GUILayout.Label("拥有:    " + item.number, style1);
+        GUILayout.Label("价值:    " + item.worth, style1);
         if (item.addBlood != 0)
         {
             GUILayout.Label("增加血量:    " + item.addBlood, style1);
