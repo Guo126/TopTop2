@@ -72,10 +72,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void NeedUpdate(int a)
+    public void MakeDead()
     {
-
-        needUpdate = a;
+        objectPool.GetInstance().DeleteAll();
+        SceneManager.LoadScene(1);
     }
 
     void SetPlayerMes() {

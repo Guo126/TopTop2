@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMes : MonoBehaviour {
+public class PlayerMes  {
 
     private string myName;
     private string level;

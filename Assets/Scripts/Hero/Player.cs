@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
     public Fight fight;
     public ChatWith chat;
     private bool isRoad;
-
+    Vector3 forePoint = Vector3.zero;
     // Use this for initialization
     void Start () {
         anim = gameObject.GetComponent<Animator>();
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour {
                         break;
                     }
                 }
-                print(info.name);
+                
                 if (info.layer == lm)
                 {
                     isRoad = true;
@@ -88,7 +88,7 @@ public class Player : MonoBehaviour {
                 if (!isRoad)
                 {
                     
-                    print("not road");
+                    print("not road"+ info.name);
                     if (info.tag == "enemy")
                     {
                         print("enemy");
@@ -155,7 +155,7 @@ public class Player : MonoBehaviour {
                 }
                 else
                 {
-                    print("road");
+                    print(" road" + info.name);
                     chat.isChat = false;
                     if (shoot != null)
                     {
@@ -174,7 +174,7 @@ public class Player : MonoBehaviour {
                     // target = Camera.main.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
                     // Debug.Log(Camera.main.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f)));
                     target = infoPoint.point;
-                    
+                    timer = 0;
                 }
 
             }
@@ -188,19 +188,26 @@ public class Player : MonoBehaviour {
                 direction = Vector3.zero;
                 target = transform.position;
             }
-            Vector3 forePoint =  Vector3.zero ;
+         
             if (timer == 0)
             {
+              
                 forePoint = transform.position;
+               // print(forePoint);
             }
             timer += Time.deltaTime;
-            if (forePoint!=null&&timer >= 1f)
+            if (forePoint!=null&&timer >= 0.85f)
             {
-                float dis = (transform.position - forePoint).magnitude;
-                if (dis < 0.01f)
+                //Debug.Log((transform.position - forePoint).magnitude);
+                // float dis = Vector3.Distance(transform.position, forePoint);
+                float dis = (new Vector3(transform.position.x,0, transform.position.z) - new Vector3(forePoint.x,0,forePoint.z)).magnitude;
+                print(dis);
+                if (dis < 1)        
                 {
-                    target = transform.position;
+                    target = transform.position;    
+                    
                 }
+                timer = 0;
             }
             target.y = this.transform.position.y;
             this.transform.LookAt(target);
