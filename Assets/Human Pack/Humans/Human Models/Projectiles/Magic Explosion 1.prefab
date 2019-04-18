@@ -5,12 +5,12 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 406212}
-  - 33: {fileID: 3306212}
-  - 23: {fileID: 2306212}
-  - 95: {fileID: 9506212}
+  - component: {fileID: 406212}
+  - component: {fileID: 3306212}
+  - component: {fileID: 2306212}
+  - component: {fileID: 9506212}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -23,10 +23,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 406214}
-  - 95: {fileID: 9506214}
+  - component: {fileID: 406214}
+  - component: {fileID: 9506214}
   m_Layer: 0
   m_Name: rotator
   m_TagString: Untagged
@@ -39,11 +39,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 406216}
-  - 114: {fileID: 11428030}
-  - 108: {fileID: 10823464}
+  - component: {fileID: 406216}
+  - component: {fileID: 11428030}
+  - component: {fileID: 10823464}
   m_Layer: 0
   m_Name: Magic Explosion 1
   m_TagString: Untagged
@@ -63,6 +63,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 406214}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &406214
 Transform:
   m_ObjectHideFlags: 1
@@ -76,6 +77,7 @@ Transform:
   - {fileID: 406212}
   m_Father: {fileID: 406216}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &406216
 Transform:
   m_ObjectHideFlags: 1
@@ -83,12 +85,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.28844833, y: 0, z: -16.5940514}
+  m_LocalPosition: {x: -6.2884483, y: 0, z: -16.594051}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406214}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2306212
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -98,20 +101,30 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: fdcf0cc2ae62f764fbfa10841db3dca5, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &3306212
 MeshFilter:
@@ -161,9 +174,9 @@ Light:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106216}
   m_Enabled: 1
-  serializedVersion: 6
+  serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: .475862086, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.4758621, b: 0, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -171,9 +184,11 @@ Light:
   m_Shadows:
     m_Type: 0
     m_Resolution: -1
+    m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: .0500000007
-    m_NormalBias: .400000006
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -182,10 +197,12 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 1
+  m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-  m_AreaSize: {x: 1, y: 1}
 --- !u!114 &11428030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca2fd16a53f2ae42a8673cf2923e251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: .449999988
+  lifetime: 0.45
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

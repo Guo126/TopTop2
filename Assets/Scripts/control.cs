@@ -8,37 +8,33 @@ using UnityEngine.UI;
 public class control : MonoBehaviour {
 
     private string[] heroNames = new string[4] { "巫师" ,"领主","射手","战士"};
-    public  int hero_index = 0;
+    public  int hero_index = 1;
     public GameObject heroName;
     public GameObject heroObject;
     public GameObject[] heros;
     public Animator[] animators;
     private float target;
     private float fill = 0;
-    public GameObject slider;
-    public GameObject start;
-    public GameObject loading;
+    public GameObject slider, start, loading;
     private float timer;
     public TextAsset heroTxt;
     private string[] mes;
     public GameObject heroMes;
-    public Text per;
+    public Text per,diyName;
+    public AudioClip clip1, clip2;
 
     private void Start()
     {
-        animators[2].SetBool("isOk", true);
+        animators[1].SetBool("isOk", true);
         string text = heroTxt.text;
         mes = text.Split('\n');
         heroMes.GetComponent<Text>().text = mes[hero_index];
     }
-    private void Update()
-    {
-      
-    }
 
+    //上一个英雄
     public void preHero()
     {
-         
+        MusicManager.Instance.PlayMusic(clip1);
         if (hero_index < 4 && hero_index!=0)
         {
             Camera.main.transform.position = Vector3.Lerp
@@ -46,46 +42,41 @@ public class control : MonoBehaviour {
             
             --hero_index;
             isCanTurn();
-            //animators[hero_index].SetBool("isOk", true);
         }
 
         heroName.GetComponent<Text>().text = heroNames[hero_index];
         heroMes.GetComponent<Text>().text = mes[hero_index];
     }
 
+    //下一个英雄
     public void nextHero()
     {
-            
+        MusicManager.Instance.PlayMusic(clip2);
         if (hero_index >= 0 && hero_index != 3)
         {
             Camera.main.transform.position = Vector3.Lerp
             (Camera.main.transform.position, new Vector3(Camera.main.transform.position.x + 5, 0, -10), 1f);
             
             ++hero_index;
-            isCanTurn();
-           // animators[hero_index].SetBool("isOk", true);
-            
+            isCanTurn();         
         }
         heroName.GetComponent<Text>().text = heroNames[hero_index];
         heroMes.GetComponent<Text>().text = mes[hero_index];
     }
 
+    //中间的旋转，其它暂停
     void isCanTurn()
     {
         for (int i = 0; i < 4; i++)
         {
             if (i == hero_index)
             {
-                animators[i].SetBool("isOk", true);
-               // heros[i].GetComponent<Animator>().enabled = true;
+                animators[i].SetBool("isOk", true);             
             }
             else
             {
-                animators[i].SetBool("isOk", false);
-                //heros[i].GetComponent<Animator>().enabled = false;
-                //heros[i].transform.eulerAngles = new Vector3(-180, 0, -180);
+                animators[i].SetBool("isOk", false);             
             }
-
         }
     }
 
@@ -94,17 +85,18 @@ public class control : MonoBehaviour {
     {
         Application.Quit();
     }
-
+    //踏上征途，
     public void play()
     {
-        start.SetActive(false);
+        start.SetActive(false);                  
         heroObject.SetActive(false);
         loading.SetActive(true);
-        PlayerPrefs.SetInt("hero_index", hero_index);
+        PlayerPrefs.SetInt("hero_index", hero_index);   //传入英雄编号
+        PlayerPrefs.SetString("myName", diyName.text);
         StartCoroutine("change");
     }
 
-
+    //加载场景，获取进度
     IEnumerator change()
     {
         yield return new WaitForEndOfFrame();   //等待帧结束

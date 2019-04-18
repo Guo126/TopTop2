@@ -5,38 +5,34 @@ using UnityEngine.Video;
 
 public class gameBegin : MonoBehaviour {
 
-    public GameObject start;
+    public GameObject start,canvas;
     private int isFirst = 0;
     private bool isStart = true;
     VideoPlayer vp = null;
 	// Use this for initialization
 	void Start () {
-        PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteAll();
             vp = Camera.main.GetComponent<VideoPlayer>();
-            vp.Play();
-            
-           
-       
     }
     private void Update()
     {
         if (isStart)
         {
-            wait();
+            if (vp.frame >= 1)
+            {
+                canvas.SetActive(false);
+            }
+            if ((ulong)vp.frame >= vp.frameCount - 15)
+            {
+                start.SetActive(true);
+                
+                isStart = false;
+            }
         }
         
     }
 
-    // Update is called once per frame
-    void wait()
-    {
-        if ((ulong)vp.frame >= vp.frameCount-15)
-        {
-            start.SetActive(true);
-            isStart = false;
-        }
-        
-    }
+   
 
     
 }

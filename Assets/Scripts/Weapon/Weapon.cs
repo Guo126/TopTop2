@@ -5,15 +5,15 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
 
     public int damage;
-    public Color defaultColor;
+   // public Color defaultColor;
     private MeshRenderer mat;
 
  
 
-    public void SetColor(Color color)
-    {
-        mat.material.SetColor("_Color", color);
-    }
+    //public void SetColor(Color color)
+    //{
+    //    mat.material.SetColor("_Color", color);
+    //}
 
     private MeshRenderer mr;
     private TrailColor trailColor;

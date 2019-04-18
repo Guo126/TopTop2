@@ -348,7 +348,7 @@ public class ItemUseAndDestory : MonoBehaviour, IBeginDragHandler, IDragHandler,
             if (item.addAtk != 0)
             {
                 PlayerMes.getInstance().Attack += item.addAtk;
-                weapon.SetColor(new Color(70/255,  1, 1));
+               // weapon.SetColor(new Color(70/255,  1, 1));
                 op.Invoke(2);
             }
             if (item.addDef != 0)

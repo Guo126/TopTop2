@@ -5,27 +5,18 @@ using UnityEngine;
 public class TowerAction : MonoBehaviour {
 
     public Transform point;
-    public GameObject darkEvn,mainEvn;
-    [SerializeField]
-    private Camera camera1, camera2;
+    public AudioClip clip;
+    
 	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-        {
-            darkEvn.SetActive(true);
-            mainEvn.SetActive(false);
-            
+        {   
             other.transform.position = point.position;
+            other.GetComponent<Player>().target = point.position;
+            MusicManager.Instance.PlayMusic(clip);
         }
     }
 }

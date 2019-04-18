@@ -11,8 +11,10 @@ public class changeMenu : MonoBehaviour {
     public GameObject menu;
     public GameObject start, world, overlay, hero,maneger;
     public VideoClip story1;
+    private bool isPlay = false;
+    public  AudioClip clik,ac;
 
-   
+
     // Use this for initialization
     void Start () {
         
@@ -30,29 +32,58 @@ public class changeMenu : MonoBehaviour {
 
 
     }
+
+
+    private void Update()
+    {
+        if (isPlay&&Camera.main.GetComponent<VideoPlayer>().frame>=1)
+        {
+           
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {             
+                Camera.main.GetComponent<VideoPlayer>().Stop();
+               // Camera.main.GetComponent<VideoPlayer>().frame = (long)Camera.main.GetComponent<VideoPlayer>().frameCount; 
+            }
+           
+            if (Camera.main.GetComponent<VideoPlayer>().frame >= (long)Camera.main.GetComponent<VideoPlayer>().frameCount)
+            {
+                world.SetActive(true);
+                overlay.SetActive(true);
+                hero.SetActive(true);
+            }
+        }
+    }
+
+
     public void theMenu()
     {
-        if (index == 0)
+        MusicManager.Instance.PlayMusic(ac);
+        switch (index)
         {
-            //Camera.main.GetComponent<VideoPlayer>().clip = story1;
-            //Camera.main.GetComponent<VideoPlayer>().Play();
-            //PlayerPrefs.SetInt("isFirst", 1);
-            //Invoke("wait", 1.5f);
-            //Invoke("wait2", 92f);
-            wait();
-            wait2();
-
+            case 0:
+                Camera.main.GetComponent<VideoPlayer>().clip = story1;
+                Camera.main.GetComponent<VideoPlayer>().Play();
+                isPlay = true;
+                PlayerPrefs.SetInt("isFirst", 1);
+                Invoke("wait", 1.5f);
+                break;
+            case 1:
+                gameObject.SetActive(false);
+                maneger.GetComponent<control>().play();
+                break;
+            case 2:
+                break;
+            case 3:
+                Application.Quit();
+                break;
         }
-        else if(index == 1)
-        {
-            gameObject.SetActive(false);
-            maneger.GetComponent<control>().play();
-        }
+        
     }
 	
 	public void nextMenu()
     {
-        if(index == 3)
+        MusicManager.Instance.PlayMusic(clik);
+        if (index == 3)
         {
             index = 0;
         }
@@ -65,6 +96,7 @@ public class changeMenu : MonoBehaviour {
 
     public void beforeMenu()
     {
+        MusicManager.Instance.PlayMusic(clik);
         if (index == 0)
         {
             index = 3;
@@ -82,10 +114,5 @@ public class changeMenu : MonoBehaviour {
         start.SetActive(false);
     }
 
-    void wait2()
-    {
-        world.SetActive(true);
-        overlay.SetActive(true);
-        hero.SetActive(true);
-    }
+   
 }

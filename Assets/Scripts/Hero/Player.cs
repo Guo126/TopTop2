@@ -147,8 +147,8 @@ public class Player : MonoBehaviour {
                     else if (info.tag == "Chest")
                     {
                         print("chest");
-                        target = info.transform.position;
-
+                       // target = info.transform.position;
+                        target = infoPoint.point;
                     }
                     
                     
@@ -193,15 +193,14 @@ public class Player : MonoBehaviour {
             {
               
                 forePoint = transform.position;
-               // print(forePoint);
+               
             }
             timer += Time.deltaTime;
             if (forePoint!=null&&timer >= 0.85f)
             {
-                //Debug.Log((transform.position - forePoint).magnitude);
-                // float dis = Vector3.Distance(transform.position, forePoint);
+            
                 float dis = (new Vector3(transform.position.x,0, transform.position.z) - new Vector3(forePoint.x,0,forePoint.z)).magnitude;
-                print(dis);
+
                 if (dis < 1)        
                 {
                     target = transform.position;    

@@ -1008,7 +1008,7 @@ Rigidbody:
   m_GameObject: {fileID: 1551680839741994}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1.26
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isChat: 0
   target: {x: 0, y: 0, z: 0}
-  gravity: 5
+  gravity: 2
   speed: 2
   perfab: {fileID: 100000, guid: 94ea46daee623bc4c9cf766407358761, type: 2}
   ac:

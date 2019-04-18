@@ -45,8 +45,9 @@ public class LookAtPlayer : MonoBehaviour {
 
 
             //围绕原点旋转，也可以将Vector3.zero改为 target.position,就是围绕观察对象旋转
+            transform.localEulerAngles = new Vector3(20, transform.localEulerAngles.y, transform.localEulerAngles.z);
             transform.RotateAround(transform.position, Vector3.up, Input.GetAxis("Mouse X") * 10);
-           // transform.RotateAround(transform.position, Vector3.right, Input.GetAxis("Mouse Y") * 10);
+           // transform.RotateAround(transform.position, Vector3.left, Input.GetAxis("Mouse Y") * 10);
 
 
             //float x = transform.eulerAngles.x;
